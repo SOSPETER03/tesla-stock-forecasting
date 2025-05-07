@@ -15,6 +15,9 @@ This project explores advanced time series forecasting techniques applied to Tes
 
 ---
 
+
 ## 📂 Additional Resources
 
 - [View Preprocessing Summary](preprocessing)
+- [View Exploratory Data Analysis](eda)
+
