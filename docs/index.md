@@ -21,3 +21,5 @@ This project explores advanced time series forecasting techniques applied to Tes
 - [View Preprocessing Summary](preprocessing)
 - [View Exploratory Data Analysis](eda)
 
+
+- [Classical Time Series Modeling](../notebooks/classical_models.ipynb)
