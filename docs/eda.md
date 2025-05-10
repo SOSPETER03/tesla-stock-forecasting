@@ -1,61 +1,81 @@
 # 📊 Exploratory Data Analysis (EDA)
 
-## 1. Tesla Closing Price Over Time
+This section presents visual and statistical analysis of Tesla’s historical stock behavior to inform model development.
+
+---
+
+## 1. 📈 Tesla Closing Price Over Time
 ![Closing Price](../results/figures/eda_closing_price.png)  
-Interpretation: The Tesla stock price shows exponential growth from late 2019 to 2022, followed by high volatility. The upward trend indicates strong momentum, while frequent sharp movements suggest active market behavior.
+**Interpretation**: Tesla’s stock price exhibits exponential growth from late 2019 to 2022, followed by high volatility. This trend reflects investor enthusiasm and market dynamics.
 
-## 2. Daily Returns Over Time
+---
+
+## 2. 🔁 Daily Returns Over Time
 ![Returns](../results/figures/eda_returns.png)  
-Interpretation: Returns fluctuate tightly around zero, with noticeable spikes during volatile market periods (e.g., 2020 pandemic). This supports further modeling of return dynamics.
+**Interpretation**: Returns are centered around zero with spikes during major events (e.g., 2020 pandemic). Modeling returns captures short-term fluctuations and risk.
 
-## 3. 20-Day Rolling Volatility
+---
+
+## 3. 📉 20-Day Rolling Volatility
 ![Volatility](../results/figures/eda_volatility.png)  
-Interpretation: Volatility spiked significantly during early 2020 and early 2022, indicating market uncertainty. Rolling volatility helps assess risk across different periods.
+**Interpretation**: Volatility surged during 2020 and 2022, aligning with market uncertainty. Rolling volatility helps evaluate changing risk.
 
-## 4. Boxplots for Outlier Detection
+---
 
-Returns:  
+## 4. 🧪 Outlier Detection via Boxplots
+
+**Returns**:  
 ![Return Boxplot](../results/figures/eda_boxplot_returns.png)  
 
-Volume:  
+**Volume**:  
 ![Volume Boxplot](../results/figures/eda_boxplot_volume.png)  
 
-Interpretation: Both returns and volume display substantial outliers. These extreme values should be carefully handled in model building to avoid distortion.
+**Interpretation**: Outliers in returns and volume highlight extreme events. These may influence model sensitivity and require preprocessing.
 
-## 5. Descriptive Statistics
+---
 
-| Feature | Mean | Skewness | Kurtosis |
-|------- |------|----------|----------|
-| Return | ~0.0018 | 0.179 | 4.34 |
-| Log Return | ~0.0012 | -0.159 | 4.52 |
-| Rolling Std (20) | ~6.73 | 1.69 | 2.94 |
-| Volume | ~1.14e+08 | 2.74 | 13.33 |
+## 5. 📊 Descriptive Statistics
 
-Interpretation: High kurtosis and skewness in volume indicate heavy tails and asymmetry, implying non-normal behavior.
+| Feature           | Mean       | Skewness | Kurtosis |
+|------------------|------------|----------|----------|
+| Return            | 0.0018     | 0.179    | 4.34     |
+| Log Return        | 0.0012     | -0.159   | 4.52     |
+| Rolling Std (20)  | 6.73       | 1.69     | 2.94     |
+| Volume            | 1.14e+08   | 2.74     | 13.33    |
 
-## 6. Correlation Matrix
+**Interpretation**: Non-normal behavior in volume (high kurtosis, skewness) suggests episodic surges in trading activity.
+
+
+
+## 6. 🔗 Correlation Matrix
 ![Correlation Matrix](../results/figures/eda_corr_matrix.png)  
-Interpretation: High correlation between `close_lag1` and `rolling_mean_20` suggests redundancy. Volume has weak correlation with returns but can be informative when modeling volatility.
+**Interpretation**: Strong correlation between lag and rolling features confirms temporal structure. Weak correlation between volume and return aligns with financial theory.
 
-## 7. Autocorrelation and Partial Autocorrelation
+---
 
-ACF - Returns:  
+## 7. 🔄 ACF and PACF of Returns
+
+**ACF**:  
 ![ACF](../results/figures/eda_acf_returns.png)  
 
-PACF - Returns:  
+**PACF**:  
 ![PACF](../results/figures/eda_pacf_returns.png)  
 
-Interpretation: Minimal autocorrelation beyond lag 1 suggests weak temporal dependency, a key observation for ARMA/ARIMA modeling.
+**Interpretation**: Lag 1 exhibits weak autocorrelation. Higher-order lags contribute little, supporting simpler AR/MA models.
 
-## 8. STL Decomposition
+---
 
-Trend:  
+## 8. 📉 STL Decomposition
+
+**Trend**:  
 ![Trend](../results/figures/eda_stl_trend.png)  
 
-Seasonal:  
+**Seasonal**:  
 ![Seasonal](../results/figures/eda_stl_seasonal.png)  
 
-Residual:  
+**Residual**:  
 ![Residual](../results/figures/eda_stl_residual.png)  
 
-Interpretation: STL decomposition uncovers a strong upward trend and changing seasonal patterns. The residuals contain noise and abrupt shifts—ideal for evaluating stationarity and model fitting.
+**Interpretation**: A strong upward trend and mild seasonality are present. Residuals highlight irregular fluctuations for model calibration.
+
+---
