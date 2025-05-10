@@ -1,36 +1,48 @@
+## 🌀 SARIMA Model Summary
 
-## 📦 Outlier Detection Boxplots
+We applied a **SARIMA(1,1,1)(1,1,1,12)** model to capture both short-term trends and seasonal effects in Tesla's stock price.
 
-The following boxplots help visualize potential outliers in Tesla stock data:
+**Evaluation Metrics:**
+- AIC: 14,368.07
+- BIC: 14,396.68
+- Log Likelihood: -7,179.03
 
-### 🔹 Return Distribution
-![Return Boxplot](../results/figures/return_boxplot.png)
+**Diagnostics:**
+- Ljung-Box Q (lag 1): 1.70 (p ≈ 0.19) → residuals uncorrelated
+- Jarque-Bera: 13,169.58 (p < 0.001) → residuals not normally distributed
+- Heteroskedasticity: Present (H = 542.62)
+- Skewness: -0.24  
+- Kurtosis: 14.81
 
-This boxplot visualizes the daily return distribution of Tesla stock.  
-Most returns cluster tightly around zero, indicating overall price stability on a day-to-day basis.  
-However, there are several significant outliers both above and below, representing days of unusual gains or losses, likely due to earnings announcements or market shocks.
+**Figures:**
+- ![ACF Seasonal Differencing](../results/figures/sarima_acf_seasonal_diff.png)
+- ![PACF Seasonal Differencing](../results/figures/sarima_pacf_seasonal_diff.png)
+- ![Actual vs Forecast](../results/figures/sarima_actual_vs_forecast.png)
 
-### 🔹 Volume Distribution
-![Volume Boxplot](../results/figures/Volume_boxplot.png)
+**Interpretation**:  
+SARIMA captures seasonal dynamics well and outperforms ARIMA in modeling regular patterns. However, residuals still show heavy tails.
 
-The boxplot for trading volume shows a wide range with a heavy upper tail.  
-This indicates that while most days have moderate trading activity, there are several high-volume outliers, which may coincide with news events, quarterly earnings releases, or broader market moves.  
-Such spikes in volume often reflect investor reactions to new information or speculation.
+---
 
+## 🔁 SARIMAX Model with Exogenous Variables
 
-### ARIMA Model Evaluation Summary
+We enhanced the SARIMA model by including exogenous predictors: **Lagged Returns** and **Volume**.
 
-We fit an ARIMA(1,1,1) model to Tesla's closing stock prices. Key evaluation metrics:
+**Model: SARIMAX(1,1,1)(1,1,1,12) + [Return_lag1, Volume]**
 
-- AIC: 14,763.84
-- BIC: 14,781.14
-- Log Likelihood: -7,378.92
-- RMSE: ~5.53 (computed from predictions)
-- Residual Diagnostics:
-  - Ljung-Box Q (lag 1): 0.43 (p ≈ 0.51) → residuals uncorrelated
-  - Jarque-Bera: 15,947.58 (p < 0.001) → residuals not normally distributed
-  - Heteroskedasticity: Strong presence (H = 539.95)
-  - Skewness: -0.10
-  - Kurtosis: 15.74 (leptokurtic)
+**Key Coefficients:**
+- `Return_lag1`: -5.3102 (p < 0.001) → significant
+- `Volume`: 4.92e-09 (p ≈ 0.17) → not statistically significant
 
-Overall, ARIMA(1,1,1) captures short-term dynamics but residuals indicate volatility clustering and heavy tails. Suitable for baseline forecasting.
+**Metrics:**
+- AIC: 14,830.46
+- BIC: 14,870.47
+- Log Likelihood: -7,408.23
+
+**Figures:**
+- ![SARIMAX ACF](../results/figures/sarimax_acf_seasonal_diff.png)
+- ![SARIMAX PACF](../results/figures/sarimax_pacf_seasonal_diff.png)
+- ![SARIMAX Forecast](../results/figures/sarimax_actual_vs_forecast.png)
+
+**Interpretation**:  
+Adding lagged returns significantly improves explanatory power. SARIMAX is promising for capturing both internal and external drivers of price movement.
