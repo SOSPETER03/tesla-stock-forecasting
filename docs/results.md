@@ -46,3 +46,18 @@ We enhanced the SARIMA model by including exogenous predictors: **Lagged Returns
 
 **Interpretation**:  
 Adding lagged returns significantly improves explanatory power. SARIMAX is promising for capturing both internal and external drivers of price movement.
+### 📉 SARIMAX Residual Diagnostics
+
+To evaluate the SARIMAX model performance beyond metrics, we performed residual diagnostics to assess model adequacy.
+
+**1. ACF of Residuals**
+![SARIMAX Residuals ACF](../results/figures/sarimax_residual_acf.png)
+
+**2. PACF of Residuals**
+![SARIMAX Residuals PACF](../results/figures/sarimax_residual_pacf.png)
+
+**3. Q-Q Plot of Residuals**
+![SARIMAX Residuals QQ Plot](../results/figures/sarimax_qq_plot.png)
+
+**Interpretation**:  
+The ACF/PACF plots indicate no significant autocorrelation, suggesting residuals are close to white noise. The Q-Q plot shows deviation from normality at the tails, hinting at some non-Gaussian behavior. However, overall, the residual diagnostics support model validity.
