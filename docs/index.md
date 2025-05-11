@@ -18,12 +18,16 @@ This project explores advanced time series forecasting techniques applied to Tes
 - 🚀 Deployment suggestions
 
 ---
-## 📂 Additional Resources
+
+## 📂 Documentation Links
+
 - 📄 [Preprocessing Summary](preprocessing)  
 - 📊 [Exploratory Data Analysis](eda.md)  
-- 🧮 [SARIMA Model Results](results.md)  
-- 📘 [Classical Time Series Modeling Notebook](../notebooks/classical_models.ipynb)
+- 📘 [Classical Time Series Modeling](classical_models.md)  
+- 🧮 [SARIMA & SARIMAX Results](results.md)  
+- 🧱 [Project Structure Overview](structure.md)
 
+---
 
 ## 🔗 GitHub Repository
 
