@@ -16,6 +16,8 @@ This project explores advanced time series forecasting techniques applied to Tes
 - 📈 Model development (ARIMA, SARIMA, ARIMAX, LSTM)  
 - 🧪 Model evaluation and comparison  
 - 🚀 Deployment suggestions
+- 🧪 Seasonal decomposition (STL & classical) for diagnostic insight
+
 
 ---
 
@@ -26,6 +28,7 @@ This project explores advanced time series forecasting techniques applied to Tes
 - 📘 [Classical Time Series Modeling](classical_models.md)  
 - 🧮 [SARIMA & SARIMAX Results](results.md)  
 - 🧱 [Project Structure Overview](structure.md)
+- 🧠 [Seasonal Decomposition Visuals](results.md#🔁-stl-decomposition-for-seasonal-structure)
 
 ---
 
