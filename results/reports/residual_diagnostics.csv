@@ -1,0 +1,4 @@
+Model,LjungBox_pval (lag 10),ACF(lag 1),ACF(lag 2),ACF(lag 3)
+ARIMA,0.0,0.0036,-0.0043,0.0031
+SARIMA,0.0,-0.0275,0.0174,-0.0099
+SARIMAX,0.0,-0.0001,-0.0096,0.005
