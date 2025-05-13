@@ -1,63 +1,78 @@
-## 🌀 SARIMA Model Summary
+## 📦 Outlier Detection Boxplots
 
-We applied a **SARIMA(1,1,1)(1,1,1,12)** model to capture both short-term trends and seasonal effects in Tesla's stock price.
+The following boxplots help visualize potential outliers in Tesla stock data:
 
-**Evaluation Metrics:**
-- AIC: 14,368.07
-- BIC: 14,396.68
-- Log Likelihood: -7,179.03
+### 🔹 Return Distribution
+![Return Boxplot](../results/figures/return_boxplot.png)
 
-**Diagnostics:**
-- Ljung-Box Q (lag 1): 1.70 (p ≈ 0.19) → residuals uncorrelated
-- Jarque-Bera: 13,169.58 (p < 0.001) → residuals not normally distributed
-- Heteroskedasticity: Present (H = 542.62)
-- Skewness: -0.24  
-- Kurtosis: 14.81
+This boxplot visualizes the daily return distribution of Tesla stock.  
+Most returns cluster tightly around zero, indicating overall price stability on a day-to-day basis.  
+However, there are several significant outliers both above and below, representing days of unusual gains or losses, likely due to earnings announcements or market shocks.
 
-**Figures:**
-- ![ACF Seasonal Differencing](../results/figures/sarima_acf_seasonal_diff.png)
-- ![PACF Seasonal Differencing](../results/figures/sarima_pacf_seasonal_diff.png)
-- ![Actual vs Forecast](../results/figures/sarima_actual_vs_forecast.png)
+### 🔹 Volume Distribution
+![Volume Boxplot](../results/figures/Volume_boxplot.png)
+
+The boxplot for trading volume shows a wide range with a heavy upper tail.  
+This indicates that while most days have moderate trading activity, there are several high-volume outliers, which may coincide with news events, quarterly earnings releases, or broader market moves.  
+Such spikes in volume often reflect investor reactions to new information or speculation.
+
+
+### ARIMA Model Evaluation Summary
+
+We fit an ARIMA(1,1,1) model to Tesla's closing stock prices. Key evaluation metrics:
+
+- AIC: 14,763.84
+- BIC: 14,781.14
+- Log Likelihood: -7,378.92
+- RMSE: ~5.53 (computed from predictions)
+- Residual Diagnostics:
+  - Ljung-Box Q (lag 1): 0.43 (p ≈ 0.51) → residuals uncorrelated
+  - Jarque-Bera: 15,947.58 (p < 0.001) → residuals not normally distributed
+  - Heteroskedasticity: Strong presence (H = 539.95)
+  - Skewness: -0.10
+  - Kurtosis: 15.74 (leptokurtic)
+
+Overall, ARIMA(1,1,1) captures short-term dynamics but residuals indicate volatility clustering and heavy tails. Suitable for baseline forecasting.
+---
+
+## 🔁 STL Decomposition for Seasonal Structure
+
+We performed Seasonal-Trend Decomposition using Loess (STL) to separate the Tesla closing price into trend, seasonal, and residual components.
+
+### 🔹 Trend Component
+![STL Trend](../results/figures/eda_stl_trend.png)  
+The trend captures the long-term upward trajectory of Tesla stock, showing acceleration during 2020–2021 and some plateauing post-2022.
+
+### 🔹 Seasonal Component
+![STL Seasonal](../results/figures/eda_stl_seasonal.png)  
+The seasonal component reveals mild recurring monthly fluctuations, suggesting a 12-period seasonality — validating the use of SARIMA’s seasonal order `(P,D,Q,12)`.
 
 **Interpretation**:  
-SARIMA captures seasonal dynamics well and outperforms ARIMA in modeling regular patterns. However, residuals still show heavy tails.
+The presence of clear seasonal patterns and long-term trend justifies SARIMA over standard ARIMA. Residuals from STL showed no strong periodicity beyond this.
 
 ---
 
-## 🔁 SARIMAX Model with Exogenous Variables
+## 📈 SARIMA Model Evaluation Summary
+---
 
-We enhanced the SARIMA model by including exogenous predictors: **Lagged Returns** and **Volume**.
+## 🧠 Seasonal Decomposition Analysis
 
-**Model: SARIMAX(1,1,1)(1,1,1,12) + [Return_lag1, Volume]**
+To better inform seasonal model configurations, we applied both **STL decomposition** and **classical seasonal decomposition** on Tesla’s closing price.
 
-**Key Coefficients:**
-- `Return_lag1`: -5.3102 (p < 0.001) → significant
-- `Volume`: 4.92e-09 (p ≈ 0.17) → not statistically significant
+### 📊 STL Decomposition (Seasonal-Trend using Loess)
 
-**Metrics:**
-- AIC: 14,830.46
-- BIC: 14,870.47
-- Log Likelihood: -7,408.23
-
-**Figures:**
-- ![SARIMAX ACF](../results/figures/sarimax_acf_seasonal_diff.png)
-- ![SARIMAX PACF](../results/figures/sarimax_pacf_seasonal_diff.png)
-- ![SARIMAX Forecast](../results/figures/sarimax_actual_vs_forecast.png)
+![STL Decomposition](../results/figures/stl_decomposition.png)
 
 **Interpretation**:  
-Adding lagged returns significantly improves explanatory power. SARIMAX is promising for capturing both internal and external drivers of price movement.
-### 📉 SARIMAX Residual Diagnostics
+- **Trend**: Shows strong upward movement, especially during 2020–2021.  
+- **Seasonal**: Regular, mild repeating cycles validate using **SARIMA(·,·,·)(·,·,·,12)**.  
+- **Residuals**: No clear leftover structure, indicating good seasonal capture.
 
-To evaluate the SARIMAX model performance beyond metrics, we performed residual diagnostics to assess model adequacy.
+### 📊 Classical Decomposition
 
-**1. ACF of Residuals**
-![SARIMAX Residuals ACF](../results/figures/sarimax_residual_acf.png)
-
-**2. PACF of Residuals**
-![SARIMAX Residuals PACF](../results/figures/sarimax_residual_pacf.png)
-
-**3. Q-Q Plot of Residuals**
-![SARIMAX Residuals QQ Plot](../results/figures/sarimax_qq_plot.png)
+![Classical Decomposition](../results/figures/classical_decomposition.png)
 
 **Interpretation**:  
-The ACF/PACF plots indicate no significant autocorrelation, suggesting residuals are close to white noise. The Q-Q plot shows deviation from normality at the tails, hinting at some non-Gaussian behavior. However, overall, the residual diagnostics support model validity.
+- Reinforces STL insights.  
+- Slightly less smooth components than STL.  
+- Confirms stable 12-month seasonality, supporting SARIMA’s seasonal configuration.
