@@ -4,6 +4,7 @@ site_description: A comprehensive predictive modeling project on Tesla stock usi
 site_author: Sospeter Njenga Wainaina
 repo_url: https://github.com/SOSPETER03/tesla-stock-forecasting
 repo_name: sospeter03/tesla-stock-forecasting
+
 theme:
   name: material
   language: en
@@ -17,6 +18,8 @@ theme:
     - search.share
     - content.code.copy
     - content.action.edit
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
 
 markdown_extensions:
   - toc:
@@ -27,6 +30,7 @@ markdown_extensions:
   - tables
   - pymdownx.superfences
   - pymdownx.details
+
 nav:
   - Home: index.md
   - Installation Guide: installation.md
@@ -41,10 +45,11 @@ nav:
   - Changelog: CHANGELOG.md
   - Contributing: CONTRIBUTING.md
   - Enhanced Blueprint: Tesla_Stock_Forecasting_Enhanced_Blueprint.md
+  - Roadmap: roadmap.md
+  - Contributors: contributors.md
 
-
-repo_url: https://github.com/SOSPETER03/tesla-stock-forecasting
 edit_uri: edit/main/docs/
+site_url: https://SOSPETER03.github.io/tesla-stock-forecasting/
 
 extra:
   generated_on: "May 2025"
@@ -60,23 +65,3 @@ extra:
 
 plugins:
   - search
-
-# For GitHub Pages
-site_url: https://SOSPETER03.github.io/tesla-stock-forecasting/
-
-
-theme:
-  logo: assets/logo.png
-  favicon: assets/favicon.ico
-
-theme:
-  name: material
-  favicon: assets/favicon.ico
-
-
-
-nav:
-  ...
-  - Roadmap: roadmap.md
-  - Contributors: contributors.md
-
