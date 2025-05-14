@@ -43,7 +43,11 @@ nav:
   - Enhanced Blueprint: Tesla_Stock_Forecasting_Enhanced_Blueprint.md
 
 
+repo_url: https://github.com/SOSPETER03/tesla-stock-forecasting
+edit_uri: edit/main/docs/
+
 extra:
+  generated_on: "May 2025"
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/SOSPETER03
@@ -51,37 +55,14 @@ extra:
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com/in/sospeter-njenga
       name: LinkedIn
+  footer:
+    text: "Last updated: {{ config.extra.generated_on }}"
 
 plugins:
   - search
 
 # For GitHub Pages
 site_url: https://SOSPETER03.github.io/tesla-stock-forecasting/
-
-
-theme:
-  name: material
-  language: en
-  features:
-    - navigation.tabs
-    - navigation.top
-    - search.highlight
-    - search.share
-    - content.code.copy
-    - content.action.edit
-    - footer.social
-    - content.footer
-
-extra:
-  generator: false
-  footer:
-    text: "Last updated: {{ config.extra.generated_on }}"
-extra:
-  generated_on: !ENV [BUILD_DATE, "May 2025"]
-
-
-repo_url: https://github.com/SOSPETER03/tesla-stock-forecasting
-edit_uri: edit/main/docs/
 
 
 theme:
