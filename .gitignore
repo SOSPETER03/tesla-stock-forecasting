@@ -181,3 +181,8 @@ cython_debug/
 # Exclude the virtual environment directory
 .venv311/
 # Allow saved figures to be tracked
+
+
+
+.ipynb_checkpoints/
+
