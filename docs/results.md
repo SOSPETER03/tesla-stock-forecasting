@@ -3,14 +3,14 @@
 The following boxplots help visualize potential outliers in Tesla stock data:
 
 ### 🔹 Return Distribution
-![Return Boxplot](../results/figures/return_boxplot.png)
+![Return Boxplot](figures/return_boxplot.png)
 
 This boxplot visualizes the daily return distribution of Tesla stock.  
 Most returns cluster tightly around zero, indicating overall price stability on a day-to-day basis.  
 However, there are several significant outliers both above and below, representing days of unusual gains or losses, likely due to earnings announcements or market shocks.
 
 ### 🔹 Volume Distribution
-![Volume Boxplot](../results/figures/Volume_boxplot.png)
+![Volume Boxplot](figures/Volume_boxplot.png)
 
 The boxplot for trading volume shows a wide range with a heavy upper tail.  
 This indicates that while most days have moderate trading activity, there are several high-volume outliers, which may coincide with news events, quarterly earnings releases, or broader market moves.  
@@ -61,7 +61,7 @@ To better inform seasonal model configurations, we applied both **STL decomposit
 
 ### 📊 STL Decomposition (Seasonal-Trend using Loess)
 
-![STL Decomposition](../results/figures/stl_decomposition.png)
+![STL Decomposition](figures/stl_decomposition.png)
 
 **Interpretation**:  
 - **Trend**: Shows strong upward movement, especially during 2020–2021.  
@@ -70,49 +70,9 @@ To better inform seasonal model configurations, we applied both **STL decomposit
 
 ### 📊 Classical Decomposition
 
-![Classical Decomposition](../results/figures/classical_decomposition.png)
+![Classical Decomposition](figures/classical_decomposition.png)
 
 **Interpretation**:  
 - Reinforces STL insights.  
 - Slightly less smooth components than STL.  
 - Confirms stable 12-month seasonality, supporting SARIMA’s seasonal configuration.
-
-
-
-## 🔟 Conclusion & Recommendations
-
-### ✅ **Best Performing Model**
-After evaluating six models — **AR, MA, ARIMA, SARIMA, SARIMAX, and LSTM**, and implementing a **Hybrid ARIMA + LSTM**, we conclude:
-
-> 🔥 **Hybrid ARIMA + LSTM** is the most accurate model for forecasting Tesla stock prices.
-
-- It outperformed others in **RMSE, MAE, MAPE**.
-- Statistically significant accuracy advantage confirmed via **Diebold-Mariano test** vs. SARIMAX (`p ≈ 0.0000`).
-
----
-
-### 🧠 **Model Strengths by Category**
-
-| Model       | Strengths                                                                 | Best Use Cases                                     |
-|-------------|---------------------------------------------------------------------------|---------------------------------------------------|
-| **AR / MA** | Simplicity, fast computation                                              | Short-term trend capturing, quick benchmarks      |
-| **ARIMA**   | Handles non-stationarity                                                  | Medium-term forecasting without seasonality       |
-| **SARIMA**  | Accounts for both trend + seasonality                                     | Monthly/quarterly financial patterns              |
-| **SARIMAX** | Integrates external variables like volume or lagged returns               | Multivariate forecasting, macro-driven influence  |
-| **LSTM**    | Learns complex, nonlinear temporal dependencies                           | High-volatility prediction, adaptive learning     |
-| **Hybrid**  | ARIMA models trend, LSTM models residuals (nonlinear patterns)            | **Highly volatile, non-linear series like stocks**|
-
----
-
-### ⚠️ **Limitations**
-- **No macroeconomic data** like interest rates or inflation included.
-- **LSTM training** can be time-consuming and sensitive to hyperparameters.
-- **Assumes stable market conditions**, which may not hold in extreme economic events.
-
----
-
-### 🚀 **Future Improvements**
-- Add **exogenous features** (e.g., S&P500 index, news sentiment, global indicators).
-- Tune deep learning models with **Bayesian optimization** or **Grid Search**.
-- Explore **attention-based architectures** like Transformer models for enhanced context learning.
-- Deploy as a **web app using Streamlit** for interactive forecasting.
