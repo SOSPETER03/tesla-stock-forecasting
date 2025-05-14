@@ -5,6 +5,10 @@
          <lastmod>2025-05-14</lastmod>
     </url>
     <url>
+         <loc>https://SOSPETER03.github.io/tesla-stock-forecasting/CHANGELOG/</loc>
+         <lastmod>2025-05-14</lastmod>
+    </url>
+    <url>
          <loc>https://SOSPETER03.github.io/tesla-stock-forecasting/CONTRIBUTING/</loc>
          <lastmod>2025-05-14</lastmod>
     </url>
@@ -18,10 +22,6 @@
     </url>
     <url>
          <loc>https://SOSPETER03.github.io/tesla-stock-forecasting/eda/</loc>
-         <lastmod>2025-05-14</lastmod>
-    </url>
-    <url>
-         <loc>https://SOSPETER03.github.io/tesla-stock-forecasting/index-checkpoint/</loc>
          <lastmod>2025-05-14</lastmod>
     </url>
     <url>
@@ -42,6 +42,10 @@
     </url>
     <url>
          <loc>https://SOSPETER03.github.io/tesla-stock-forecasting/structure/</loc>
+         <lastmod>2025-05-14</lastmod>
+    </url>
+    <url>
+         <loc>https://SOSPETER03.github.io/tesla-stock-forecasting/releases/tesla_forecasting_release_v1.0/</loc>
          <lastmod>2025-05-14</lastmod>
     </url>
 </urlset>

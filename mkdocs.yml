@@ -1,0 +1,60 @@
+
+site_name: Tesla Stock Forecasting
+site_description: A comprehensive predictive modeling project on Tesla stock using ARIMA, SARIMA, SARIMAX, and LSTM.
+site_author: Sospeter Njenga Wainaina
+repo_url: https://github.com/SOSPETER03/tesla-stock-forecasting
+repo_name: sospeter03/tesla-stock-forecasting
+theme:
+  name: material
+  language: en
+  palette:
+    primary: black
+    accent: red
+  features:
+    - navigation.tabs
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.action.edit
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - footnotes
+  - codehilite
+  - tables
+  - pymdownx.superfences
+  - pymdownx.details
+nav:
+  - Home: index.md
+  - Installation Guide: installation.md
+  - Project Plan: project-plan.md
+  - Data Preprocessing: preprocessing.md
+  - Exploratory Data Analysis (EDA): eda.md
+  - Classical Time Series Models: classical_models.md
+  - Results & Evaluation: results.md
+  - Project Structure: structure.md
+  - Release Notes:
+      - Version 1.0: releases/tesla_forecasting_release_v1.0.md
+  - Changelog: CHANGELOG.md
+  - Contributing: CONTRIBUTING.md
+  - Enhanced Blueprint: Tesla_Stock_Forecasting_Enhanced_Blueprint.md
+
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/SOSPETER03
+      name: GitHub
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/sospeter-njenga
+      name: LinkedIn
+
+plugins:
+  - search
+
+# For GitHub Pages
+site_url: https://SOSPETER03.github.io/tesla-stock-forecasting/
+

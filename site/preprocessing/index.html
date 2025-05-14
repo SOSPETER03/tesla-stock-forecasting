@@ -6,16 +6,16 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A comprehensive predictive modeling project on Tesla stock using ARIMA, SARIMA, SARIMAX, and LSTM.">
+        <meta name="description" content="Predictive modeling for Tesla stock using classical and deep learning time series models">
       
       
-        <meta name="author" content="Sospeter Njenga Wainaina">
+        <meta name="author" content="Sospeter Njenga">
       
       
         <link rel="canonical" href="https://SOSPETER03.github.io/tesla-stock-forecasting/preprocessing/">
       
       
-        <link rel="prev" href="../project-plan/">
+        <link rel="prev" href="../structure/">
       
       
         <link rel="next" href="../eda/">
@@ -52,6 +52,8 @@
       
     
     
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -59,7 +61,16 @@
     
     
     
-  </head>
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -67,7 +78,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="red">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -141,16 +152,13 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
-            
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
-          </a>
-        
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -175,7 +183,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
-    sospeter03/tesla-stock-forecasting
+    SOSPETER03/tesla-stock-forecasting
   </div>
 </a>
       </div>
@@ -225,7 +233,7 @@
   
     
   
-  Installation Guide
+  Installation
 
       </a>
     </li>
@@ -238,13 +246,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../project-plan/" class="md-tabs__link">
+      <a href="../structure/" class="md-tabs__link">
         
   
   
     
   
-  Project Plan
+  Project Structure
 
       </a>
     </li>
@@ -284,7 +292,7 @@
   
     
   
-  Exploratory Data Analysis (EDA)
+  Exploratory Analysis
 
       </a>
     </li>
@@ -303,7 +311,7 @@
   
     
   
-  Classical Time Series Models
+  Classical Models
 
       </a>
     </li>
@@ -335,13 +343,89 @@
   
   
     <li class="md-tabs__item">
-      <a href="../structure/" class="md-tabs__link">
+      <a href="../project-plan/" class="md-tabs__link">
         
   
   
     
   
-  Project Structure
+  Project Plan
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../releases/tesla_forecasting_release_v1.0/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Release Notes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Tesla_Stock_Forecasting_Enhanced_Blueprint/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Full Blueprint
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../CONTRIBUTING/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Contributing
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../CHANGELOG/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
 
       </a>
     </li>
@@ -386,7 +470,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
-    sospeter03/tesla-stock-forecasting
+    SOSPETER03/tesla-stock-forecasting
   </div>
 </a>
     </div>
@@ -427,7 +511,7 @@
   
   
   <span class="md-ellipsis">
-    Installation Guide
+    Installation
     
   </span>
   
@@ -444,12 +528,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../project-plan/" class="md-nav__link">
+      <a href="../structure/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Project Plan
+    Project Structure
     
   </span>
   
@@ -518,7 +602,7 @@
         <li class="md-nav__item">
   <a href="#initial-data-checks" class="md-nav__link">
     <span class="md-ellipsis">
-      ✔️ Initial Data Checks
+      Initial Data Checks
     </span>
   </a>
   
@@ -527,7 +611,7 @@
         <li class="md-nav__item">
   <a href="#feature-engineering" class="md-nav__link">
     <span class="md-ellipsis">
-      🛠 Feature Engineering
+      Feature Engineering
     </span>
   </a>
   
@@ -536,7 +620,7 @@
         <li class="md-nav__item">
   <a href="#outlier-detection" class="md-nav__link">
     <span class="md-ellipsis">
-      📦 Outlier Detection
+      Outlier Detection
     </span>
   </a>
   
@@ -545,7 +629,7 @@
         <li class="md-nav__item">
   <a href="#stationarity-testing" class="md-nav__link">
     <span class="md-ellipsis">
-      🔎 Stationarity Testing
+      Stationarity Testing
     </span>
   </a>
   
@@ -571,7 +655,7 @@
   
   
   <span class="md-ellipsis">
-    Exploratory Data Analysis (EDA)
+    Exploratory Analysis
     
   </span>
   
@@ -593,7 +677,7 @@
   
   
   <span class="md-ellipsis">
-    Classical Time Series Models
+    Classical Models
     
   </span>
   
@@ -632,12 +716,100 @@
   
   
     <li class="md-nav__item">
-      <a href="../structure/" class="md-nav__link">
+      <a href="../project-plan/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Project Structure
+    Project Plan
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/tesla_forecasting_release_v1.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Release Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tesla_Stock_Forecasting_Enhanced_Blueprint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Full Blueprint
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTRIBUTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Changelog
     
   </span>
   
@@ -676,7 +848,7 @@
         <li class="md-nav__item">
   <a href="#initial-data-checks" class="md-nav__link">
     <span class="md-ellipsis">
-      ✔️ Initial Data Checks
+      Initial Data Checks
     </span>
   </a>
   
@@ -685,7 +857,7 @@
         <li class="md-nav__item">
   <a href="#feature-engineering" class="md-nav__link">
     <span class="md-ellipsis">
-      🛠 Feature Engineering
+      Feature Engineering
     </span>
   </a>
   
@@ -694,7 +866,7 @@
         <li class="md-nav__item">
   <a href="#outlier-detection" class="md-nav__link">
     <span class="md-ellipsis">
-      📦 Outlier Detection
+      Outlier Detection
     </span>
   </a>
   
@@ -703,7 +875,7 @@
         <li class="md-nav__item">
   <a href="#stationarity-testing" class="md-nav__link">
     <span class="md-ellipsis">
-      🔎 Stationarity Testing
+      Stationarity Testing
     </span>
   </a>
   
@@ -725,44 +897,39 @@
 
 
   
-    <a href="https://github.com/SOSPETER03/tesla-stock-forecasting/edit/master/docs/preprocessing.md" title="Edit this page" class="md-content__button md-icon">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
-    </a>
-  
   
 
 
-<h1 id="preprocessing-summary">🧼 Preprocessing Summary<a class="headerlink" href="#preprocessing-summary" title="Permanent link">&para;</a></h1>
-<h2 id="initial-data-checks">✔️ Initial Data Checks<a class="headerlink" href="#initial-data-checks" title="Permanent link">&para;</a></h2>
+<h1 id="preprocessing-summary">Preprocessing Summary<a class="headerlink" href="#preprocessing-summary" title="Permanent link">&para;</a></h1>
+<h2 id="initial-data-checks">Initial Data Checks<a class="headerlink" href="#initial-data-checks" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Rows &amp; Columns:</strong> 2,274 rows × 5 columns</li>
-<li><strong>Date Range:</strong> 2015-01-02 to 2024-01-16</li>
-<li><strong>Data Types:</strong></li>
-<li>Open, High, Low, Close → float64</li>
-<li>Volume → int64</li>
-<li><strong>Datetime Index Set:</strong> Yes</li>
-<li><strong>Frequency Check:</strong> Could not be inferred (irregular calendar days)</li>
+<li>Rows  Columns 2274 rows  5 columns</li>
+<li>Date Range 2015-01-02 to 2024-01-16</li>
+<li>Data Types</li>
+<li>Open High Low Close  float64</li>
+<li>Volume  int64</li>
+<li>Datetime Index Set Yes</li>
+<li>Frequency Check Could not be inferred irregular calendar days</li>
 </ul>
-<h2 id="feature-engineering">🛠 Feature Engineering<a class="headerlink" href="#feature-engineering" title="Permanent link">&para;</a></h2>
+<h2 id="feature-engineering">Feature Engineering<a class="headerlink" href="#feature-engineering" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>return</code>: Daily percentage change of the closing price</li>
-<li><code>log_return</code>: Natural log of (1 + return)</li>
-<li><code>close_lag1</code>: Previous day's closing price</li>
-<li><code>rolling_mean_20</code>: 20-day moving average of Close</li>
-<li><code>rolling_std_20</code>: 20-day rolling standard deviation (volatility)</li>
+<li>return Daily percentage change of the closing price</li>
+<li>log_return Natural log of 1  return</li>
+<li>close_lag1 Previous days closing price</li>
+<li>rolling_mean_20 20-day moving average of Close</li>
+<li>rolling_std_20 20-day rolling standard deviation volatility</li>
 </ul>
-<h2 id="outlier-detection">📦 Outlier Detection<a class="headerlink" href="#outlier-detection" title="Permanent link">&para;</a></h2>
+<h2 id="outlier-detection">Outlier Detection<a class="headerlink" href="#outlier-detection" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Return Outliers:</strong> 143 (via IQR method and boxplot)</li>
-<li><strong>Volume Outliers:</strong> 162 (indicative of major trading events or anomalies)</li>
+<li>Return Outliers 143 via IQR method and boxplot</li>
+<li>Volume Outliers 162 indicative of major trading events or anomalies</li>
 </ul>
-<h2 id="stationarity-testing">🔎 Stationarity Testing<a class="headerlink" href="#stationarity-testing" title="Permanent link">&para;</a></h2>
+<h2 id="stationarity-testing">Stationarity Testing<a class="headerlink" href="#stationarity-testing" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>ADF Test (Close):</strong> p = 0.6687 → Non-stationary</li>
-<li><strong>KPSS Test (Close):</strong> p = 0.0100 → Trend non-stationary</li>
-<li><strong>Differencing Applied:</strong> 1st order (<code>d = 1</code>)</li>
-<li>✅ <strong>Stationarity achieved after differencing</strong></li>
+<li>ADF Test Close p  06687  Non-stationary</li>
+<li>KPSS Test Close p  00100  Trend non-stationary</li>
+<li>Differencing Applied 1st order d  1</li>
+<li>Stationarity achieved after differencing</li>
 </ul>
 
 
@@ -784,12 +951,6 @@
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Back to top
-</button>
-        
       </main>
       
         <footer class="md-footer">
@@ -806,26 +967,6 @@
   
 </div>
       
-        <div class="md-social">
-  
-    
-    
-    
-    
-    <a href="https://github.com/SOSPETER03" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-    </a>
-  
-    
-    
-    
-    
-    <a href="https://linkedin.com/in/sospeter-njenga" target="_blank" rel="noopener" title="LinkedIn" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
-    </a>
-  
-</div>
-      
     </div>
   </div>
 </footer>
@@ -838,11 +979,13 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.action.edit"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "search.highlight", "search.suggest"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>
