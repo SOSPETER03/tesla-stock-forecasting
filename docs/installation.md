@@ -1,19 +1,19 @@
 # Installation Guide
 
 ## Requirements
-- Python 3.8+
+- Python 38
 - pip
 
 ## Setup
-```bash
-git clone https://github.com/SOSPETER03/tesla-stock-forecasting.git
+bash
+git clone httpsgithubcomSOSPETER03tesla-stock-forecastinggit
 cd tesla-stock-forecasting
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
-```
+python -m venv venv
+venvScriptsactivate
+pip install -r requirementstxt
+
 
 ## Run the Pipeline
-```bash
-python main.py
-```
+bash
+python mainpy
+

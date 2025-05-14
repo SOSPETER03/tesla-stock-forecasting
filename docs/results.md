@@ -1,78 +1,72 @@
-## 📦 Outlier Detection Boxplots
+#  Results and Model Evaluation
 
-The following boxplots help visualize potential outliers in Tesla stock data:
-
-### 🔹 Return Distribution
-![Return Boxplot](figures/return_boxplot.png)
-
-This boxplot visualizes the daily return distribution of Tesla stock.  
-Most returns cluster tightly around zero, indicating overall price stability on a day-to-day basis.  
-However, there are several significant outliers both above and below, representing days of unusual gains or losses, likely due to earnings announcements or market shocks.
-
-### 🔹 Volume Distribution
-![Volume Boxplot](figures/Volume_boxplot.png)
-
-The boxplot for trading volume shows a wide range with a heavy upper tail.  
-This indicates that while most days have moderate trading activity, there are several high-volume outliers, which may coincide with news events, quarterly earnings releases, or broader market moves.  
-Such spikes in volume often reflect investor reactions to new information or speculation.
-
-
-### ARIMA Model Evaluation Summary
-
-We fit an ARIMA(1,1,1) model to Tesla's closing stock prices. Key evaluation metrics:
-
-- AIC: 14,763.84
-- BIC: 14,781.14
-- Log Likelihood: -7,378.92
-- RMSE: ~5.53 (computed from predictions)
-- Residual Diagnostics:
-  - Ljung-Box Q (lag 1): 0.43 (p ≈ 0.51) → residuals uncorrelated
-  - Jarque-Bera: 15,947.58 (p < 0.001) → residuals not normally distributed
-  - Heteroskedasticity: Strong presence (H = 539.95)
-  - Skewness: -0.10
-  - Kurtosis: 15.74 (leptokurtic)
-
-Overall, ARIMA(1,1,1) captures short-term dynamics but residuals indicate volatility clustering and heavy tails. Suitable for baseline forecasting.
----
-
-## 🔁 STL Decomposition for Seasonal Structure
-
-We performed Seasonal-Trend Decomposition using Loess (STL) to separate the Tesla closing price into trend, seasonal, and residual components.
-
-### 🔹 Trend Component
-![STL Trend](../results/figures/eda_stl_trend.png)  
-The trend captures the long-term upward trajectory of Tesla stock, showing acceleration during 2020–2021 and some plateauing post-2022.
-
-### 🔹 Seasonal Component
-![STL Seasonal](../results/figures/eda_stl_seasonal.png)  
-The seasonal component reveals mild recurring monthly fluctuations, suggesting a 12-period seasonality — validating the use of SARIMA’s seasonal order `(P,D,Q,12)`.
-
-**Interpretation**:  
-The presence of clear seasonal patterns and long-term trend justifies SARIMA over standard ARIMA. Residuals from STL showed no strong periodicity beyond this.
+This section presents the evaluation of all models used in the project using key performance metrics visual forecasts and residual analysis
 
 ---
 
-## 📈 SARIMA Model Evaluation Summary
+## AR Model Evaluation
+
+- Metrics MAE MSE RMSE MAPE
+- Plot figuresar_actual_vs_forecastpng
+
 ---
 
-## 🧠 Seasonal Decomposition Analysis
+## MA Model Evaluation
 
-To better inform seasonal model configurations, we applied both **STL decomposition** and **classical seasonal decomposition** on Tesla’s closing price.
+- Metrics MAE MSE RMSE MAPE
+- Plot figuresma_actual_vs_forecastpng
 
-### 📊 STL Decomposition (Seasonal-Trend using Loess)
+---
 
-![STL Decomposition](figures/stl_decomposition.png)
+## ARIMA Model Evaluation
 
-**Interpretation**:  
-- **Trend**: Shows strong upward movement, especially during 2020–2021.  
-- **Seasonal**: Regular, mild repeating cycles validate using **SARIMA(·,·,·)(·,·,·,12)**.  
-- **Residuals**: No clear leftover structure, indicating good seasonal capture.
+- Metrics MAE MSE RMSE MAPE AIC BIC
+- Plot figuresarima_actual_vs_forecastpng
 
-### 📊 Classical Decomposition
+---
 
-![Classical Decomposition](figures/classical_decomposition.png)
+## SARIMA Model Evaluation
 
-**Interpretation**:  
-- Reinforces STL insights.  
-- Slightly less smooth components than STL.  
-- Confirms stable 12-month seasonality, supporting SARIMA’s seasonal configuration.
+- Metrics MAE MSE RMSE MAPE AIC BIC
+- Plots figuressarima_actual_vs_forecastpng
+
+---
+
+## SARIMAX Model Evaluation
+
+- Metrics MAE MSE RMSE MAPE AIC BIC
+- Plots
+  - Forecast figuressarimax_actual_vs_forecastpng
+  - ACF figuressarimax_residual_acfpng
+  - PACF figuressarimax_residual_pacfpng
+  - QQ figuressarimax_qq_plotpng
+
+---
+
+## STL Decomposition for Seasonal Structure
+
+- Plots
+  - STL Trend figureseda_stl_trendpng
+  - STL Seasonal figureseda_stl_seasonalpng
+
+---
+
+## LSTM Model Evaluation
+
+- Metrics MAE RMSE MAPE
+- Plots
+  - Forecast vs Actual figureslstm_actual_vs_forecastpng
+  - Training Loss figureslstm_training_losspng
+
+---
+
+## Hybrid ARIMA  LSTM
+
+- Plot figureshybrid_arima_lstm_forecastpng
+
+---
+
+## Boxplots of Errors
+
+- Returns figuresreturn_boxplotpng
+- Volume figuresVolume_boxplotpng
