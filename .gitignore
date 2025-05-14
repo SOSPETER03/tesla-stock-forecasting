@@ -186,3 +186,8 @@ cython_debug/
 
 .ipynb_checkpoints/
 
+
+# Ignore built MkDocs site directory
+site/
+
+
